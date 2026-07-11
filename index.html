@@ -6,67 +6,49 @@
     <title>TheLocalSignal | Make Your Business The Destination</title>
     <style>
         :root {
-            --primary: #005691;
-            --cyan: #00d7c7;
-            --dark: #071c35;
-            --text-sub: #4e6178;
-            --bg-gradient: linear-gradient(135deg, #f3f8fc 0%, #e5f0f9 100%);
+            --primary: #0264a7;
+            --blue-glow: rgba(2, 100, 167, 0.15);
+            --cyan-gradient: linear-gradient(90deg, #00ced1 0%, #00e5bc 100%);
+            --dark-text: #06192c;
+            --sub-text: #4f637b;
+            --bg-layout: linear-gradient(135deg, #f4f8fc 0%, #e6f1fa 100%);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background: var(--bg-gradient);
-            color: var(--dark);
+            background: var(--bg-layout);
+            color: var(--dark-text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Top Header Area */
         header {
             max-width: 1440px;
             width: 100%;
             margin: 0 auto;
             padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--dark);
+            gap: 0.75rem;
             text-decoration: none;
         }
 
-        .logo span {
-            color: #4a5568;
-            font-weight: 600;
+        .logo img {
+            height: 40px;
+            width: auto;
         }
 
-        .logo-mark {
-            width: 38px;
-            height: 38px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #e2eef7;
-        }
-
-        /* Container Layout */
-        .funnel-wrap {
+        .funnel-container {
             max-width: 1440px;
             width: 100%;
             margin: 0 auto;
@@ -76,53 +58,52 @@
             flex-direction: column;
         }
 
-        /* Title Area */
-        .title-block {
+        .hero-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
-        .title-block h1 {
+        .hero-header h1 {
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
         }
 
-        .title-block h1 span {
+        .hero-header h1 span {
             color: var(--primary);
         }
 
-        .title-block h1 em {
+        .hero-header h1 em {
             font-style: italic;
             font-weight: 700;
         }
 
-        .title-block p {
+        .hero-header p {
             font-size: 1.3rem;
-            color: var(--text-sub);
+            color: var(--sub-text);
             font-weight: 500;
         }
 
-        /* Responsive 3-Column Grid matching the Image */
-        .content-grid {
+        /* 3-Column Layout Matching the Image Exactly */
+        .main-layout-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         @media (min-width: 1200px) {
-            .content-grid {
+            .main-layout-grid {
                 grid-template-columns: 360px 1fr 420px;
             }
         }
 
-        /* Left Side Cards styling */
-        .cards-column {
+        /* Left Features Layout */
+        .features-list {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
         .feature-card {
@@ -131,118 +112,117 @@
             border-radius: 1.25rem;
             padding: 1.5rem;
             display: flex;
-            gap: 1.25rem;
             align-items: center;
-            box-shadow: 0 8px 24px rgba(2, 86, 145, 0.04);
+            gap: 1.25rem;
+            box-shadow: 0 10px 25px rgba(2, 100, 167, 0.04);
         }
 
-        .card-graphic {
-            width: 80px;
-            height: 80px;
+        .feature-image-container {
+            width: 85px;
+            height: 85px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .card-graphic svg {
+        .feature-image-container img {
             width: 100%;
             height: 100%;
+            object-fit: contain;
         }
 
-        .card-info h3 {
-            font-size: 1.2rem;
+        .feature-text h3 {
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.25rem;
         }
 
-        .card-info p {
+        .feature-text p {
             font-size: 0.95rem;
-            color: var(--text-sub);
-            line-height: 1.4;
+            color: var(--sub-text);
+            line-height: 1.45;
         }
 
-        /* Center Map Graphic styling */
-        .map-column {
+        /* Center Hero Map Layout */
+        .center-hero-graphic {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .map-art {
+        .center-hero-graphic img {
             width: 100%;
-            max-width: 520px;
+            max-width: 540px;
             height: auto;
         }
 
-        /* Right Side Neon Glass Form styling */
-        .glass-box {
-            background: linear-gradient(135deg, rgba(225, 242, 254, 0.85) 0%, rgba(200, 228, 253, 0.75) 100%);
+        /* Right Side Blue Glassmorphic Lead Capture Panel */
+        .lead-glass-panel {
+            background: linear-gradient(135deg, rgba(223, 241, 254, 0.9) 0%, rgba(198, 227, 253, 0.8) 100%);
             border: 3px solid #bce0fd;
             border-radius: 2rem;
             padding: 2.5rem 2.25rem;
-            box-shadow: 0 30px 60px rgba(2, 86, 145, 0.12);
+            box-shadow: 0 30px 60px rgba(2, 100, 167, 0.15);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             text-align: center;
         }
 
-        .form-title h2 {
+        .panel-headline h2 {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
-        .form-title h2 span {
+        .panel-headline h2 span {
             color: var(--primary);
         }
 
-        .form-title p {
+        .panel-headline p {
             font-size: 0.95rem;
-            color: var(--text-sub);
+            color: var(--sub-text);
             margin-bottom: 2rem;
             line-height: 1.4;
         }
 
-        /* Inputs Elements */
-        .input-fields-group {
+        .funnel-form {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
-        .input-item {
+        .form-input-field {
             width: 100%;
-            padding: 1.05rem 1.25rem;
-            border: 1px solid rgba(2, 86, 145, 0.15);
-            border-radius: 1.2rem;
-            background: rgba(255, 255, 255, 0.75);
+            padding: 1.1rem 1.25rem;
+            border: 1px solid rgba(2, 100, 167, 0.15);
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
-            color: var(--dark);
+            color: var(--dark-text);
             transition: all 0.2s ease;
         }
 
-        .input-item:focus {
+        .form-input-field:focus {
             outline: none;
             background: #ffffff;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(2, 86, 145, 0.08);
+            box-shadow: 0 0 0 4px var(--blue-glow);
         }
 
-        select.input-item {
+        select.form-input-field {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234e6178'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234f637b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1.25rem center;
             background-size: 1.1rem;
             padding-right: 3rem;
         }
 
-        /* Fluid Cyan Glow CTA Button */
-        .submit-cta {
+        .glow-submit-btn {
             width: 100%;
-            padding: 1.15rem;
-            background: linear-gradient(90deg, #00ced1 0%, #00e5bc 100%);
+            padding: 1.2rem;
+            background: var(--cyan-gradient);
             border: none;
             border-radius: 1.5rem;
             font-size: 1.1rem;
@@ -254,15 +234,15 @@
             margin-top: 0.5rem;
         }
 
-        .submit-cta:hover {
+        .glow-submit-btn:hover {
             transform: scale(1.01);
-            box-shadow: 0 12px 28px rgba(0, 206, 209, 0.45);
+            box-shadow: 0 12px 30px rgba(0, 206, 209, 0.5);
         }
 
-        .legal-footer {
+        .compliance-text {
             text-align: center;
             font-size: 0.8rem;
-            color: var(--text-sub);
+            color: var(--sub-text);
             margin-top: 3.5rem;
         }
     </style>
@@ -271,142 +251,119 @@
 
     <header>
         <a href="#" class="logo">
-            <div class="logo-mark">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005691" stroke-width="3"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/></svg>
-            </div>
-            TheLocal<span>Signal</span>
+            <!-- Replace with your actual logo graphic image if needed -->
+            <img src="logo.png" alt="TheLocalSignal Logo" onerror="this.style.display='none';">
+            <!-- Fallback Text styled to match logo context -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0264a7" stroke-width="3" style="margin-right:-5px"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/></svg>
+            <span style="font-size:1.5rem; font-weight:800; color:#06192c;">TheLocal<span style="color:#4a5568; font-weight:600;">Signal</span></span>
         </a>
     </header>
 
-    <main class="funnel-wrap">
-        <section class="title-block">
+    <main class="funnel-container">
+        <section class="hero-header">
             <h1><span>TheLocalSignal:</span> Make Your Business <em>The*</em> Destination.</h1>
             <p>Claim Your Map. Beat Your Competition. Win Your Neighborhood.</p>
         </section>
 
-        <div class="content-grid">
+        <div class="main-layout-grid">
             
-            <!-- Left Side Cards -->
-            <div class="cards-column">
+            <!-- Left Side Core Features -->
+            <div class="features-list">
+                
+                <!-- Card 1: GMB Dominance -->
                 <div class="feature-card">
-                    <div class="card-graphic">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 65 L40 73 L65 65 L40 40 Z" fill="#eef6fc" stroke="#005691" stroke-width="2"/>
-                            <circle cx="40" cy="36" r="14" fill="#fff" stroke="#005691" stroke-width="2"/>
-                            <polygon points="40,12 43,20 51,20 45,25 47,33 40,28 33,33 35,25 29,20 37,20" fill="#ffca28"/>
-                            <path d="M40 26 L40 38 L48 44" stroke="#00d7c7" stroke-width="2.5" stroke-linecap="round"/>
-                        </svg>
+                    <div class="feature-image-container">
+                        <!-- Drops in your GMB asset graphic exactly -->
+                        <img src="gmb-icon.png" alt="GMB Dominance Illustration">
                     </div>
-                    <div class="card-info">
+                    <div class="feature-text">
                         <h3>GMB Dominance</h3>
                         <p>Get Ranked #1 locally, boost visibility, and attract ready-to-buy customers.</p>
                     </div>
                 </div>
 
+                <!-- Card 2: Total Map Optimization -->
                 <div class="feature-card">
-                    <div class="card-graphic">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 65 Q 40 35 65 65" stroke="#8fa0b5" stroke-width="2" stroke-dasharray="4 4"/>
-                            <path d="M25 45 L40 25 L52 38 L70 15" stroke="#005691" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="70" cy="15" r="5" fill="#ffca28"/>
-                            <circle cx="40" cy="25" r="3.5" fill="#00d7c7"/>
-                        </svg>
+                    <div class="feature-image-container">
+                        <!-- Drops in your Rocket asset graphic exactly -->
+                        <img src="optimization-icon.png" alt="Total Map Optimization Illustration">
                     </div>
-                    <div class="card-info">
+                    <div class="feature-text">
                         <h3>Total Map Optimization</h3>
                         <p>Fine-tune your profile for maximum reach, conversion, and local trust.</p>
                     </div>
                 </div>
 
+                <!-- Card 3: 360 Street View -->
                 <div class="feature-card">
-                    <div class="card-graphic">
-                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="15" y="22" width="50" height="36" rx="6" fill="#fff" stroke="#005691" stroke-width="2"/>
-                            <circle cx="40" cy="40" r="12" fill="#eef6fc" stroke="#005691" stroke-width="2"/>
-                            <circle cx="40" cy="40" r="5" fill="#071c35"/>
-                            <path d="M10 40 C10 20, 70 20, 70 40" stroke="#00d7c7" stroke-width="2" stroke-dasharray="3 3"/>
-                        </svg>
+                    <div class="feature-image-container">
+                        <!-- Drops in your Camera Room asset graphic exactly -->
+                        <img src="streetview-icon.png" alt="360 Street View Illustration">
                     </div>
-                    <div class="card-info">
+                    <div class="feature-text">
                         <h3>360 Street View</h3>
                         <p>Create immersive virtual tours that build instant credibility and confidence.</p>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Central Isometric Map Section -->
-            <div class="map-column">
-                <svg class="map-art" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M250 60 L440 155 L250 250 L60 155 Z" fill="#dce9f4"/>
-                    <path d="M250 135 L400 210 L250 285 L100 210 Z" fill="#c7ddf0"/>
-                    <path d="M250 60 L250 285" stroke="#fff" stroke-width="2.5" stroke-dasharray="6 5"/>
-                    <path d="M60 155 L440 155" stroke="#fff" stroke-width="2.5" stroke-dasharray="6 5"/>
-                    <g transform="translate(250, 180)">
-                        <circle cx="0" cy="0" r="30" fill="none" stroke="#00d7c7" stroke-width="2" opacity="0.4"/>
-                        <path d="M0 -28 C-10 -28 -12 -14 0 0 C12 -14 10 -28 0 -28 Z" fill="url(#pinColor)"/>
-                        <circle cx="0" cy="-16" r="4" fill="#fff"/>
-                    </g>
-                    <defs>
-                        <linearGradient id="pinColor" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#005691"/>
-                            <stop offset="100%" stop-color="#00d7c7"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
+            <!-- Central Column: Main Isometric Map Graphic Box -->
+            <div class="center-hero-graphic">
+                <!-- Drops in your central isometric city map graphic asset image -->
+                <img src="hero-map.png" alt="TheLocalSignal Interactive Isometric Map Network">
             </div>
 
-            <!-- Right Side Glass Panel Form Area -->
-            <div class="lead-capture-column">
-                <div class="glass-box">
-                    <div class="form-title">
-                        <h2>Claim Your <span>FREE</span><br>Local Presence Report</h2>
-                        <p>Discover your visibility score and untapped growth potential in 60 seconds.</p>
-                    </div>
-
-                    <form class="input-fields-group" id="auditRequestForm">
-                        <input type="text" id="nameInput" class="input-item" placeholder="Name" required>
-                        <input type="email" id="emailInput" class="input-item" placeholder="Email" required>
-                        <input type="tel" id="phoneInput" class="input-item" placeholder="Phone" required>
-                        
-                        <!-- Updated Dropdown List incorporating requested sectors -->
-                        <select id="industryInput" class="input-item" required>
-                            <option value="" disabled selected hidden>Industry</option>
-                            <option value="Retail Store">Retail Store / Showroom</option>
-                            <option value="Restaurant / Cafe">Restaurant / Café</option>
-                            <option value="Fitness / Gyms">Fitness, Gyms & Wellness</option>
-                            <option value="Education Institutes">Education / Coaching Centers</option>
-                            <option value="Medical Clinic">Medical / Dental Clinic</option>
-                            <option value="Real Estate">Real Estate Firm</option>
-                            <option value="Local Services">Home Services / General Contracting</option>
-                            <option value="Other Industry">Other Industry / Business Field</option>
-                        </select>
-
-                        <button type="submit" class="submit-cta">Generate My Free Report</button>
-                    </form>
+            <!-- Right Side Column: Glassmorphic Lead Panel Container -->
+            <div class="lead-glass-panel">
+                <div class="panel-headline">
+                    <h2>Claim Your <span>FREE</span><br>Local Presence Report</h2>
+                    <p>Discover your visibility score and untapped growth potential in 60 seconds.</p>
                 </div>
+
+                <form class="funnel-form" id="funnelCapture">
+                    <input type="text" id="name" class="form-input-field" placeholder="Name" required>
+                    <input type="email" id="email" class="form-input-field" placeholder="Email" required>
+                    <input type="tel" id="phone" class="form-input-field" placeholder="Phone" required>
+                    
+                    <!-- Form Select Dropdown updated exactly as requested -->
+                    <select id="industry" class="form-input-field" required>
+                        <option value="" disabled selected hidden>Industry</option>
+                        <option value="Retail Store / Showroom">Retail Store / Showroom</option>
+                        <option value="Restaurant / Cafe">Restaurant / Café</option>
+                        <option value="Fitness / Gyms / Wellness">Fitness, Gyms & Wellness</option>
+                        <option value="Education / Coaching">Education / Coaching Centers</option>
+                        <option value="Medical Clinic">Medical / Dental Clinic</option>
+                        <option value="Real Estate">Real Estate Agency</option>
+                        <option value="Local Services">Home Services / Contracting</option>
+                        <option value="Other Business Field">Other Industry</option>
+                    </select>
+
+                    <button type="submit" class="glow-submit-btn">Generate My Free Report</button>
+                </form>
             </div>
 
         </div>
 
-        <footer class="legal-footer">
+        <footer class="compliance-text">
             *Powered by TheLocalSignal | 🔒 Your privacy is secured.
         </footer>
     </main>
 
     <script>
-        document.getElementById('auditRequestForm').addEventListener('submit', function(e) {
+        document.getElementById('funnelCapture').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('nameInput').value;
-            const email = document.getElementById('emailInput').value;
-            const phone = document.getElementById('phoneInput').value;
-            const industry = document.getElementById('industryInput').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const industry = document.getElementById('industry').value;
             
-            const targetWhatsApp = "917799345794";
+            const targetLine = "917799345794";
             
-            const textPayload = `Hello TheLocalSignal! 🗺️📈\n\nI want to audit my local map rankings.\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📞 *Phone:* ${phone}\n🏢 *Business Field:* ${industry}\n\nLet's run the visibility analysis report for my GMB profile!`;
+            const outreachText = `Hello TheLocalSignal! 🗺️📈\n\nI want to audit my local map rankings.\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📞 *Phone:* ${phone}\n🏢 *Business Field:* ${industry}\n\nLet's run the visibility analysis report for my GMB profile!`;
             
-            window.open(`https://wa.me/${targetWhatsApp}?text=${encodeURIComponent(textPayload)}`, '_blank');
+            window.open(`https://wa.me/${targetLine}?text=${encodeURIComponent(outreachText)}`, '_blank');
             
             this.reset();
         });
