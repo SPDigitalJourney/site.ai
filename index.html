@@ -6,45 +6,32 @@
     <title>TheLocalSignal | Make Your Business The Destination</title>
     <style>
         :root {
-            --primary: #0264a7;
-            --primary-dark: #014b7c;
-            --accent: #00d2c4;
-            --text-main: #06192c;
-            --text-sub: #4f637b;
-            --bg-gradient: linear-gradient(135deg, #f3f8fc 0%, #e6f1fa 100%);
-            --card-shadow: 0 10px 30px rgba(2, 100, 167, 0.05);
-            --form-shadow: 0 30px 60px rgba(2, 100, 167, 0.15);
+            --primary: #005691;
+            --cyan: #00d7c7;
+            --dark: #071c35;
+            --text-sub: #4e6178;
+            --bg-gradient: linear-gradient(135deg, #f3f8fc 0%, #e5f0f9 100%);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background: var(--bg-gradient);
-            color: var(--text-main);
+            color: var(--dark);
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Ambient background map lines styling */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(2, 100, 167, 0.03) 0px, transparent 40%),
-                radial-gradient(at 90% 10%, rgba(0, 210, 196, 0.03) 0px, transparent 40%);
-            z-index: -1;
-        }
-
-        /* Top Navigation Header */
+        /* Top Header Area */
         header {
-            max-width: 1400px;
+            max-width: 1440px;
+            width: 100%;
             margin: 0 auto;
             padding: 1.5rem 2rem;
             display: flex;
@@ -54,79 +41,88 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--text-main);
+            color: var(--dark);
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
+        .logo span {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid #e1ecf5;
+            border: 2px solid #e2eef7;
         }
 
-        /* Core Funnel Layout Grid */
-        .funnel-container {
-            max-width: 1450px;
+        /* Container Layout */
+        .funnel-wrap {
+            max-width: 1440px;
+            width: 100%;
             margin: 0 auto;
-            padding: 1rem 2rem 4rem 2rem;
+            padding: 0 2rem 4rem 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .hero-section {
+        /* Title Area */
+        .title-block {
             text-align: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 2.5rem;
         }
 
-        .hero-section h1 {
+        .title-block h1 {
             font-size: 3rem;
             font-weight: 800;
-            color: var(--text-main);
             margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
         }
 
-        .hero-section h1 span {
+        .title-block h1 span {
             color: var(--primary);
         }
 
-        .hero-section h1 em {
+        .title-block h1 em {
             font-style: italic;
             font-weight: 700;
         }
 
-        .hero-section p {
-            font-size: 1.25rem;
+        .title-block p {
+            font-size: 1.3rem;
             color: var(--text-sub);
             font-weight: 500;
         }
 
-        .main-grid {
+        /* Responsive 3-Column Grid matching the Image */
+        .content-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
 
         @media (min-width: 1200px) {
-            .main-grid {
-                grid-template-columns: 350px 1fr 400px;
+            .content-grid {
+                grid-template-columns: 360px 1fr 420px;
             }
         }
 
-        /* Left Side Service Feature Cards */
-        .features-column {
+        /* Left Side Cards styling */
+        .cards-column {
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
-            z-index: 10;
         }
 
         .feature-card {
@@ -135,168 +131,139 @@
             border-radius: 1.25rem;
             padding: 1.5rem;
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 1.25rem;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(2, 86, 145, 0.04);
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(2, 100, 167, 0.08);
-        }
-
-        .feature-illustration {
-            height: 90px;
+        .card-graphic {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
-        .feature-illustration svg {
+        .card-graphic svg {
+            width: 100%;
             height: 100%;
-            width: auto;
         }
 
-        .feature-card h3 {
-            font-size: 1.25rem;
+        .card-info h3 {
+            font-size: 1.2rem;
             font-weight: 700;
-            color: var(--text-main);
+            margin-bottom: 0.3rem;
         }
 
-        .feature-card p {
+        .card-info p {
             font-size: 0.95rem;
             color: var(--text-sub);
-            line-height: 1.45;
+            line-height: 1.4;
         }
 
-        /* Central Isometric Map Graphic Area */
-        .center-graphic-column {
+        /* Center Map Graphic styling */
+        .map-column {
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            padding: 2rem 0;
         }
 
-        .isometric-map {
+        .map-art {
             width: 100%;
-            max-width: 540px;
+            max-width: 520px;
             height: auto;
-            filter: drop-shadow(0 20px 40px rgba(2, 100, 167, 0.12));
         }
 
-        /* Right Side Blue Glassmorphic Lead Capture Panel */
-        .lead-capture-column {
-            z-index: 10;
-        }
-
-        .glass-panel {
-            background: linear-gradient(135deg, rgba(220, 240, 255, 0.8) 0%, rgba(195, 225, 253, 0.7) 100%);
+        /* Right Side Neon Glass Form styling */
+        .glass-box {
+            background: linear-gradient(135deg, rgba(225, 242, 254, 0.85) 0%, rgba(200, 228, 253, 0.75) 100%);
             border: 3px solid #bce0fd;
             border-radius: 2rem;
-            padding: 2.5rem 2rem;
-            box-shadow: var(--form-shadow);
+            padding: 2.5rem 2.25rem;
+            box-shadow: 0 30px 60px rgba(2, 86, 145, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             text-align: center;
         }
 
-        .panel-header h2 {
+        .form-title h2 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-main);
             margin-bottom: 0.5rem;
         }
 
-        .panel-header h2 span {
+        .form-title h2 span {
             color: var(--primary);
-            position: relative;
         }
 
-        .panel-header p {
+        .form-title p {
             font-size: 0.95rem;
             color: var(--text-sub);
             margin-bottom: 2rem;
             line-height: 1.4;
         }
 
-        /* Input Controls Elements Styling */
-        .capture-form {
+        /* Inputs Elements */
+        .input-fields-group {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
-        .input-element {
+        .input-item {
             width: 100%;
-            padding: 1rem 1.25rem;
-            border: 1px solid rgba(2, 100, 167, 0.15);
-            border-radius: 1rem;
+            padding: 1.05rem 1.25rem;
+            border: 1px solid rgba(2, 86, 145, 0.15);
+            border-radius: 1.2rem;
             background: rgba(255, 255, 255, 0.75);
             font-size: 1rem;
-            color: var(--text-main);
+            color: var(--dark);
             transition: all 0.2s ease;
         }
 
-        .input-element::placeholder {
-            color: #8fa0b5;
-        }
-
-        .input-element:focus {
+        .input-item:focus {
             outline: none;
             background: #ffffff;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(2, 100, 167, 0.1);
+            box-shadow: 0 0 0 4px rgba(2, 86, 145, 0.08);
         }
 
-        select.input-element {
+        select.input-item {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2306192c'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234e6178'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1.25rem center;
-            background-size: 1.25rem;
+            background-size: 1.1rem;
             padding-right: 3rem;
-            color: #8fa0b5;
         }
 
-        select.input-element:valid {
-            color: var(--text-main);
-        }
-
-        /* Fluid Cyan-Teal Submit Trigger CTA */
-        .submit-btn {
+        /* Fluid Cyan Glow CTA Button */
+        .submit-cta {
             width: 100%;
-            padding: 1.1rem;
+            padding: 1.15rem;
             background: linear-gradient(90deg, #00ced1 0%, #00e5bc 100%);
             border: none;
-            border-radius: 1.25rem;
+            border-radius: 1.5rem;
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--primary-dark);
+            color: #042b47;
             cursor: pointer;
             box-shadow: 0 8px 25px rgba(0, 206, 209, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.2s ease;
             margin-top: 0.5rem;
-            position: relative;
-            overflow: hidden;
         }
 
-        .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 30px rgba(0, 206, 209, 0.5);
+        .submit-cta:hover {
+            transform: scale(1.01);
+            box-shadow: 0 12px 28px rgba(0, 206, 209, 0.45);
         }
 
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
-
-        /* Legal Footer Note Anchor */
-        .footer-compliance {
+        .legal-footer {
             text-align: center;
             font-size: 0.8rem;
             color: var(--text-sub);
-            margin-top: 3rem;
+            margin-top: 3.5rem;
         }
     </style>
 </head>
@@ -304,180 +271,142 @@
 
     <header>
         <a href="#" class="logo">
-            <div class="logo-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0264a7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/></svg>
+            <div class="logo-mark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#005691" stroke-width="3"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/></svg>
             </div>
             TheLocal<span>Signal</span>
         </a>
     </header>
 
-    <main class="funnel-container">
-        <!-- Main Headline -->
-        <section class="hero-section">
+    <main class="funnel-wrap">
+        <section class="title-block">
             <h1><span>TheLocalSignal:</span> Make Your Business <em>The*</em> Destination.</h1>
             <p>Claim Your Map. Beat Your Competition. Win Your Neighborhood.</p>
         </section>
 
-        <div class="main-grid">
+        <div class="content-grid">
             
-            <!-- Left Side Elements (Feature Cards & Vector Art) -->
-            <div class="features-column">
-                
-                <!-- Card 1: GMB Dominance -->
+            <!-- Left Side Cards -->
+            <div class="cards-column">
                 <div class="feature-card">
-                    <div class="feature-illustration">
-                        <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 75 L60 85 L100 75 L60 45 Z" fill="#e6f2fc" stroke="#0264a7" stroke-width="2"/>
-                            <circle cx="60" cy="40" r="16" fill="#fff" stroke="#0264a7" stroke-width="2.5"/>
-                            <path d="M60 24 L60 40 L72 48" stroke="#00d2c4" stroke-width="3" stroke-linecap="round"/>
-                            <polygon points="60,12 64,22 75,22 66,28 70,38 60,32 50,38 54,28 45,22 56,22" fill="#ffca28"/>
-                            <path d="M25 60 H40 M80 60 H95" stroke="#8fa0b5" stroke-width="2" stroke-dasharray="4 3"/>
+                    <div class="card-graphic">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 65 L40 73 L65 65 L40 40 Z" fill="#eef6fc" stroke="#005691" stroke-width="2"/>
+                            <circle cx="40" cy="36" r="14" fill="#fff" stroke="#005691" stroke-width="2"/>
+                            <polygon points="40,12 43,20 51,20 45,25 47,33 40,28 33,33 35,25 29,20 37,20" fill="#ffca28"/>
+                            <path d="M40 26 L40 38 L48 44" stroke="#00d7c7" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <h3>GMB Dominance</h3>
-                    <p>Get Ranked #1 locally, boost visibility, and attract ready-to-buy customers.</p>
+                    <div class="card-info">
+                        <h3>GMB Dominance</h3>
+                        <p>Get Ranked #1 locally, boost visibility, and attract ready-to-buy customers.</p>
+                    </div>
                 </div>
 
-                <!-- Card 2: Total Map Optimization -->
                 <div class="feature-card">
-                    <div class="feature-illustration">
-                        <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 75 C 40 40, 80 40, 105 75" stroke="#8fa0b5" stroke-width="2" stroke-dasharray="4 4"/>
-                            <path d="M35 50 L55 25 L70 40 L95 15" stroke="#0264a7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polygon points="95,15 85,15 95,25" fill="#0264a7"/>
-                            <circle cx="55" cy="25" r="4" fill="#00d2c4"/>
-                            <circle cx="70" cy="40" r="4" fill="#00d2c4"/>
-                            <circle cx="95" cy="15" r="5" fill="#ffca28"/>
+                    <div class="card-graphic">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 65 Q 40 35 65 65" stroke="#8fa0b5" stroke-width="2" stroke-dasharray="4 4"/>
+                            <path d="M25 45 L40 25 L52 38 L70 15" stroke="#005691" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="70" cy="15" r="5" fill="#ffca28"/>
+                            <circle cx="40" cy="25" r="3.5" fill="#00d7c7"/>
                         </svg>
                     </div>
-                    <h3>Total Map Optimization</h3>
-                    <p>Fine-tune your profile for maximum reach, conversion, and local trust.</p>
+                    <div class="card-info">
+                        <h3>Total Map Optimization</h3>
+                        <p>Fine-tune your profile for maximum reach, conversion, and local trust.</p>
+                    </div>
                 </div>
 
-                <!-- Card 3: 360 Street View -->
                 <div class="feature-card">
-                    <div class="feature-illustration">
-                        <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="25" y="25" width="70" height="48" rx="8" fill="#fff" stroke="#0264a7" stroke-width="2.5"/>
-                            <circle cx="60" cy="49" r="16" fill="#e6f2fc" stroke="#0264a7" stroke-width="2"/>
-                            <circle cx="60" cy="49" r="6" fill="#06192c"/>
-                            <rect x="42" y="17" width="36" height="8" rx="3" fill="#8fa0b5"/>
-                            <path d="M15 49 C15 25, 105 25, 105 49" stroke="#00d2c4" stroke-width="2" stroke-dasharray="3 3"/>
+                    <div class="card-graphic">
+                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="22" width="50" height="36" rx="6" fill="#fff" stroke="#005691" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="12" fill="#eef6fc" stroke="#005691" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="5" fill="#071c35"/>
+                            <path d="M10 40 C10 20, 70 20, 70 40" stroke="#00d7c7" stroke-width="2" stroke-dasharray="3 3"/>
                         </svg>
                     </div>
-                    <h3>360 Street View</h3>
-                    <p>Create immersive virtual tours that build instant credibility and confidence.</p>
+                    <div class="card-info">
+                        <h3>360 Street View</h3>
+                        <p>Create immersive virtual tours that build instant credibility and confidence.</p>
+                    </div>
                 </div>
-
             </div>
 
-            <!-- Central Isometric City Vector Model -->
-            <div class="center-graphic-column">
-                <svg class="isometric-map" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Base Grid Roads Layout -->
-                    <path d="M250 50 L450 150 L250 250 L50 150 Z" fill="#d9e8f5"/>
-                    <path d="M250 130 L410 210 L250 290 L90 210 Z" fill="#c3daf0"/>
-                    <!-- Road Layout Markings lines -->
-                    <path d="M250 50 L250 290" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/>
-                    <path d="M50 150 L450 150" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/>
-                    
-                    <!-- Isometric Building Structures blocks (Left Area) -->
-                    <path d="M120 130 L160 110 L200 130 L160 150 Z" fill="#90caf9"/>
-                    <path d="M120 130 L160 150 L160 190 L120 170 Z" fill="#42a5f5"/>
-                    <path d="M160 150 L200 130 L200 170 L160 190 Z" fill="#1e88e5"/>
-                    <!-- Store/Cafe elements overlay -->
-                    <rect x="135" y="155" width="15" height="20" fill="#fff"/>
-                    <polygon points="120,130 140,140 160,130 140,120" fill="#ffca28"/>
-
-                    <!-- Isometric Building Structures blocks (Right Area) -->
-                    <path d="M300 130 L340 110 L380 130 L340 150 Z" fill="#a5d6a7"/>
-                    <path d="M300 130 L340 150 L340 190 L300 170 Z" fill="#66bb6a"/>
-                    <path d="M340 150 L380 130 L380 170 L340 190 Z" fill="#43a047"/>
-
-                    <!-- Tower Core Hub Block (Center Top) -->
-                    <path d="M230 90 L250 80 L270 90 L250 100 Z" fill="#b3e5fc"/>
-                    <path d="M230 90 L250 100 L250 160 L230 150 Z" fill="#29b6f6"/>
-                    <path d="M250 100 L270 90 L270 150 L250 160 Z" fill="#039be5"/>
-
-                    <!-- Glowing TLS Core Target Map Pins Pointer -->
+            <!-- Central Isometric Map Section -->
+            <div class="map-column">
+                <svg class="map-art" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M250 60 L440 155 L250 250 L60 155 Z" fill="#dce9f4"/>
+                    <path d="M250 135 L400 210 L250 285 L100 210 Z" fill="#c7ddf0"/>
+                    <path d="M250 60 L250 285" stroke="#fff" stroke-width="2.5" stroke-dasharray="6 5"/>
+                    <path d="M60 155 L440 155" stroke="#fff" stroke-width="2.5" stroke-dasharray="6 5"/>
                     <g transform="translate(250, 180)">
-                        <circle cx="0" cy="0" r="35" fill="none" stroke="#00d2c4" stroke-width="2" opacity="0.4"/>
-                        <circle cx="0" cy="0" r="20" fill="none" stroke="#0264a7" stroke-width="2"/>
-                        <!-- Pin Shape Shape -->
-                        <path d="M0 -30 C-12 -30 -15 -15 0 0 C15 -15 12 -30 0 -30 Z" fill="url(#pinGlow)"/>
-                        <circle cx="0" cy="-18" r="5" fill="#fff"/>
+                        <circle cx="0" cy="0" r="30" fill="none" stroke="#00d7c7" stroke-width="2" opacity="0.4"/>
+                        <path d="M0 -28 C-10 -28 -12 -14 0 0 C12 -14 10 -28 0 -28 Z" fill="url(#pinColor)"/>
+                        <circle cx="0" cy="-16" r="4" fill="#fff"/>
                     </g>
-                    
-                    <!-- Decorative Map Pointers surrounding city -->
-                    <path d="M100 210 C95 210 90 200 100 190 C110 200 105 210 100 210 Z" fill="#ff7043"/>
-                    <path d="M400 190 C395 190 390 180 400 170 C410 180 405 190 400 190 Z" fill="#ab47bc"/>
-                    <path d="M320 250 C315 250 310 240 320 230 C330 240 325 250 320 250 Z" fill="#26a69a"/>
-
-                    <!-- Gradients Declarations Definition -->
                     <defs>
-                        <linearGradient id="pinGlow" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#0264a7"/>
-                            <stop offset="100%" stop-color="#00d2c4"/>
+                        <linearGradient id="pinColor" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#005691"/>
+                            <stop offset="100%" stop-color="#00d7c7"/>
                         </linearGradient>
                     </defs>
                 </svg>
             </div>
 
-            <!-- Right Side Glassmorphic Form Column -->
+            <!-- Right Side Glass Panel Form Area -->
             <div class="lead-capture-column">
-                <div class="glass-panel">
-                    
-                    <div class="panel-header">
+                <div class="glass-box">
+                    <div class="form-title">
                         <h2>Claim Your <span>FREE</span><br>Local Presence Report</h2>
                         <p>Discover your visibility score and untapped growth potential in 60 seconds.</p>
                     </div>
 
-                    <form class="capture-form" id="auditForm">
-                        <input type="text" id="clientName" class="input-element" placeholder="Name" required>
-                        <input type="email" id="clientEmail" class="input-element" placeholder="Email" required>
-                        <input type="tel" id="clientPhone" class="input-element" placeholder="Phone" required>
+                    <form class="input-fields-group" id="auditRequestForm">
+                        <input type="text" id="nameInput" class="input-item" placeholder="Name" required>
+                        <input type="email" id="emailInput" class="input-item" placeholder="Email" required>
+                        <input type="tel" id="phoneInput" class="input-item" placeholder="Phone" required>
                         
-                        <select id="clientIndustry" class="input-element" required>
+                        <!-- Updated Dropdown List incorporating requested sectors -->
+                        <select id="industryInput" class="input-item" required>
                             <option value="" disabled selected hidden>Industry</option>
-                            <option value="Retail Showroom">Retail Store / Showroom</option>
+                            <option value="Retail Store">Retail Store / Showroom</option>
                             <option value="Restaurant / Cafe">Restaurant / Café</option>
+                            <option value="Fitness / Gyms">Fitness, Gyms & Wellness</option>
+                            <option value="Education Institutes">Education / Coaching Centers</option>
                             <option value="Medical Clinic">Medical / Dental Clinic</option>
                             <option value="Real Estate">Real Estate Firm</option>
-                            <option value="Local Services">Home Services (HVAC/Plumbing)</option>
+                            <option value="Local Services">Home Services / General Contracting</option>
+                            <option value="Other Industry">Other Industry / Business Field</option>
                         </select>
 
-                        <button type="submit" class="submit-btn">Generate My Free Report</button>
+                        <button type="submit" class="submit-cta">Generate My Free Report</button>
                     </form>
-
                 </div>
             </div>
 
         </div>
 
-        <footer class="footer-compliance">
+        <footer class="legal-footer">
             *Powered by TheLocalSignal | 🔒 Your privacy is secured.
         </footer>
     </main>
 
     <script>
-        // Form Processing logic routing directly to configured line
-        document.getElementById('auditForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.getElementById('auditRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            const name = document.getElementById('clientName').value;
-            const email = document.getElementById('clientEmail').value;
-            const phone = document.getElementById('clientPhone').value;
-            const industry = document.getElementById('clientIndustry').value;
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const industry = document.getElementById('industryInput').value;
             
-            const whatsAppTarget = "917799345794";
+            const targetWhatsApp = "917799345794";
             
-            // Format precise structural outreach text payload package
             const textPayload = `Hello TheLocalSignal! 🗺️📈\n\nI want to audit my local map rankings.\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📞 *Phone:* ${phone}\n🏢 *Business Field:* ${industry}\n\nLet's run the visibility analysis report for my GMB profile!`;
             
-            const webReadyMessage = encodeURIComponent(textPayload);
-            
-            // Trigger operational web window system routing connection
-            window.open(`https://wa.me/${whatsAppTarget}?text=${webReadyMessage}`, '_blank');
+            window.open(`https://wa.me/${targetWhatsApp}?text=${encodeURIComponent(textPayload)}`, '_blank');
             
             this.reset();
         });
